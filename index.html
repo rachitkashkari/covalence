@@ -1,172 +1,258 @@
-<!--
-College Project: Single-file Website (index.html)
-Includes: Responsive layout, Home/About/Project/Activities/Contact sections, CSS, JS, and hosting instructions.
-How to use:
- 1. Download this file as index.html
- 2. Open in browser to preview locally
- 3. To host free on GitHub Pages:
-    - Create a new GitHub repo named <your-repo-name>
-    - Commit this index.html to the repo (root)
-    - In repo Settings -> Pages -> Source: main branch / root -> Save
-    - Your site will be available at https://<username>.github.io/<your-repo-name>/ within minutes
- 4. Or drag the file into Netlify Drop (https://app.netlify.com/drop) for a quick deploy.
-
-Want custom colors, logo, or additional pages? Tell me what to change and I'll update it.
--->
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>College Project — [Your Project Title]</title>
-  <meta name="description" content="College project site: summary, features, screenshots, and contact">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Covalence | Smart Accessories</title>
   <style>
-    /* Simple, clean responsive CSS */
-    :root{--accent:#0066cc;--bg:#f7f9fc;--card:#ffffff;--muted:#6b7280}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); color:#111}
-    header{background:linear-gradient(90deg,#fff 0%, rgba(0,0,0,0.02) 100%);backdrop-filter:saturate(120%);position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(0,0,0,0.04)}
-    .nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#9b8cff);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
-    nav a{margin-left:18px;text-decoration:none;color:var(--muted);font-weight:600}
-    .hero{max-width:1100px;margin:36px auto;padding:28px;display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:center}
-    .card{background:var(--card);padding:22px;border-radius:12px;box-shadow:0 6px 20px rgba(12,13,14,0.04)}
-    h1{font-size:28px;margin:0 0 8px}
-    p.lead{margin:0;color:var(--muted)}
-    .cta{display:inline-block;margin-top:14px;padding:10px 14px;border-radius:9px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700}
-    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:16px}
-    .feature{padding:14px;border-radius:10px;border:1px solid rgba(0,0,0,0.03);background:linear-gradient(180deg,#fff,#fbfdff)}
-    .sidebar{display:flex;flex-direction:column;gap:12px}
-    .screenshot{height:220px;border-radius:10px;background-image:linear-gradient(135deg, rgba(0,0,0,0.02), rgba(0,0,0,0.00));display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
-    main{max-width:1100px;margin:18px auto;padding:0 18px}
-    section{margin:22px 0}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    ul.clean{padding:0;margin:0;list-style:none}
-    footer{max-width:1100px;margin:36px auto;padding:18px;color:var(--muted)}
-    .badge{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(0,102,204,0.08);color:var(--accent);font-weight:700}
-    /* Responsive */
-    @media (max-width:880px){.hero{grid-template-columns:1fr;}.grid-2{grid-template-columns:1fr}.nav a{display:none}.nav{padding:12px}.brand{gap:8px}}
+    /* ---------- BASIC STYLES ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #222;
+    }
+
+    header {
+      background-color: #000;
+      color: white;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00bcd4;
+    }
+
+    section {
+      padding: 80px 10%;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #111;
+    }
+
+    p {
+      line-height: 1.6;
+      color: #444;
+      max-width: 800px;
+    }
+
+    /* ---------- HOME ---------- */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1400&q=80')
+        center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 150px 20px;
+    }
+
+    .hero h2 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+    }
+
+    /* ---------- PRODUCTS ---------- */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 12px;
+      height: 220px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      background-color: #00bcd4;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 500;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0097a7;
+    }
+
+    /* ---------- BLOG ---------- */
+    .blog-card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .blog-card h3 {
+      margin-bottom: 10px;
+    }
+
+    /* ---------- PROMOTIONS ---------- */
+    .promo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    iframe, video {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    footer {
+      background: #000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
   </style>
 </head>
+
 <body>
   <header>
-    <div class="nav">
-      <div class="brand">
-        <div class="logo">CP</div>
-        <div>
-          <div style="font-weight:800">College Project</div>
-          <div style="font-size:12px;color:var(--muted)">[Your Department] • [Semester]</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#project">Project</a>
-        <a href="#activities">Activities</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+    <h1>Covalence</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#blogs">Blogs</a></li>
+        <li><a href="#promotions">Promotions</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section class="hero" id="home">
-    <div class="card">
-      <h1>[Project Title]</h1>
-      <p class="lead">One-line summary of the project — what it does and why it matters. Keep it short and crisp.</p>
-      <a class="cta" href="#project">See project</a>
-
-      <div class="features">
-        <div class="feature">Feature 1 — short</div>
-        <div class="feature">Feature 2 — short</div>
-        <div class="feature">Feature 3 — short</div>
-        <div class="feature">Feature 4 — short</div>
-      </div>
-
-      <div style="margin-top:16px;color:var(--muted);font-size:14px">Team: Alice • Bob • You &nbsp;&middot;&nbsp; Supervisor: Prof. Name</div>
-    </div>
-
-    <aside class="sidebar">
-      <div class="card screenshot">Project screenshot / image</div>
-      <div class="card">
-        <div style="font-weight:700">Quick details</div>
-        <div style="color:var(--muted);margin-top:8px;font-size:14px">
-          Tech: HTML • CSS • JavaScript<br>
-          Year: 2025<br>
-          Status: Prototype
-        </div>
-      </div>
-    </aside>
+  <!-- HOME -->
+  <section id="home" class="hero">
+    <h2>Smart Design. Smarter Living.</h2>
+    <p>At Covalence, we craft next-gen smart accessories that combine style, technology, and practicality to power your daily life.</p>
   </section>
 
-  <main>
-    <section id="about" class="card">
-      <h2>About the project</h2>
-      <p style="color:var(--muted)">Write a short background: problem statement, motivation, and your objectives.</p>
-      <div class="grid-2" style="margin-top:12px">
-        <div>
-          <h3>Problem</h3>
-          <p class="lead">Describe the problem you're solving and who benefits.</p>
-        </div>
-        <div>
-          <h3>Solution</h3>
-          <p class="lead">Explain your solution at a glance, including unique aspects.</p>
-        </div>
+  <section>
+    <h2>About Covalence</h2>
+    <p>
+      Covalence is a modern tech accessories brand focused on creating products that merge functionality with refined aesthetics.
+      Our mission is to make technology feel personal, effortless, and seamlessly integrated into your lifestyle.
+    </p>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <h2>Our Products</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1606813902879-4e9e72c259d8?auto=format&fit=crop&w=600&q=80" alt="Smartwatch" />
+        <h3>Pulse Smartwatch</h3>
+        <p>Track your health and stay connected in style with advanced sensors and sleek design.</p>
+        <button class="btn">View Product</button>
       </div>
-    </section>
 
-    <section id="project" class="card">
-      <h2>Project details</h2>
-      <ol>
-        <li><strong>Architecture:</strong> Brief diagram description — frontend, backend, database (if any).</li>
-        <li><strong>How to run:</strong>
-          <ul>
-            <li>Open index.html in browser for the static demo.</li>
-            <li>If there is a backend, include steps, e.g., `npm install` and `npm start`.</li>
-          </ul>
-        </li>
-        <li><strong>Files included:</strong> index.html, README.md, assets/</li>
-      </ol>
-    </section>
-
-    <section id="activities" class="card">
-      <h2>Activities & demo ideas</h2>
-      <ul class="clean">
-        <li>Live demo walkthrough (5–7 min)</li>
-        <li>Show code snippets and explain design choices</li>
-        <li>Q&A and future improvements</li>
-      </ul>
-    </section>
-
-    <section id="contact" class="card">
-      <h2>Contact</h2>
-      <p class="lead">For questions or to see the code, email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-      <div style="margin-top:8px;display:flex;gap:8px">
-        <a class="badge" href="#">Download</a>
-        <a class="badge" href="#">GitHub</a>
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1590650046871-92c887180603?auto=format&fit=crop&w=600&q=80" alt="Earbuds" />
+        <h3>EchoPods Pro</h3>
+        <p>Wireless freedom with premium sound, noise cancellation, and all-day comfort.</p>
+        <button class="btn">View Product</button>
       </div>
-    </section>
-  </main>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1606813902830-c0f0c4e7a09b?auto=format&fit=crop&w=600&q=80" alt="Charger" />
+        <h3>Fusion Charger</h3>
+        <p>Fast, reliable, and elegant charging solutions built for the modern workspace.</p>
+        <button class="btn">View Product</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shop">
+    <h2>Shop Covalence</h2>
+    <p>Explore our full collection and bring home innovation. Secure payments and fast delivery.</p>
+    <button class="btn">Go to Cart</button>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blogs">
+    <h2>From Our Blog</h2>
+    <div class="blog-card">
+      <h3>Design Meets Functionality</h3>
+      <p>Discover how Covalence combines technology and aesthetics to redefine everyday accessories.</p>
+    </div>
+
+    <div class="blog-card">
+      <h3>Inside Covalence Labs</h3>
+      <p>Get a behind-the-scenes look at how we innovate and craft products for tomorrow’s needs.</p>
+    </div>
+  </section>
+
+  <!-- PROMOTIONS -->
+  <section id="promotions">
+    <h2>Promotions & Campaigns</h2>
+    <div class="promo-grid">
+      <video controls poster="https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=1200&q=80">
+        <source src="promo-video.mp4" type="video/mp4">
+      </video>
+      <img src="https://images.unsplash.com/photo-1602526218963-20d0aef8e7d0?auto=format&fit=crop&w=600&q=80" alt="Campaign Poster">
+      <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Campaign Video"></iframe>
+    </div>
+  </section>
 
   <footer>
-    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center">
-      <div style="font-size:14px;color:var(--muted)">© <span id="year"></span> College Project</div>
-      <div style="font-size:13px;color:var(--muted)">Made for <strong>[Course Name]</strong></div>
-    </div>
+    <p>&copy; 2025 Covalence | Smart Accessories for Modern Living</p>
   </footer>
-
-  <script>
-    // Small JS to set year and simple interactivity
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Smooth scroll for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
-      });
-    });
-  </script>
 </body>
 </html>

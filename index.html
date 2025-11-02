@@ -1,258 +1,254 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Covalence | Smart Accessories</title>
-  <style>
-    /* ---------- BASIC STYLES ---------- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+import { Navigation } from "@/components/ui/navigation";
+import { HeroSection } from "@/components/ui/hero-section";
+import { CategorySection } from "@/components/ui/category-section";
+import { ProductCard } from "@/components/ui/product-card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { 
+  Star, 
+  Truck, 
+  Shield, 
+  Award, 
+  ArrowRight,
+  Quote
+} from "lucide-react";
+import heroSupplements from "@/assets/hero-supplements.jpg";
+import heroApparel from "@/assets/hero-apparel.jpg";
+import energyDrinks from "@/assets/energy-drinks.jpg";
 
-    body {
-      background-color: #f9f9f9;
-      color: #222;
-    }
+// Mock data for featured products
+const featuredProducts = [
+  {
+    id: "1",
+    name: "Apex Pre-Workout Extreme",
+    price: 4199,
+    originalPrice: 4999,
+    image: heroSupplements,
+    category: "Pre-Workout",
+    rating: 4.8,
+    reviews: 234,
+    inStock: true,
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    id: "2", 
+    name: "Performance Training Shirt",
+    price: 2899,
+    image: heroApparel,
+    category: "Apparel",
+    rating: 4.6,
+    reviews: 89,
+    inStock: true,
+    isFeatured: true,
+  },
+  {
+    id: "3",
+    name: "Energy Boost RTD",
+    price: 2099,
+    originalPrice: 2499,
+    image: energyDrinks,
+    category: "Energy",
+    rating: 4.7,
+    reviews: 156,
+    inStock: true,
+    isNew: true,
+  },
+];
 
-    header {
-      background-color: #000;
-      color: white;
-      padding: 20px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+const testimonials = [
+  {
+    name: "Priya Sharma",
+    role: "Professional Athlete, Mumbai",
+    content: "Apex Forte supplements ne mere training ko completely transform kar diya hai. Quality aur results dono outstanding hain!",
+    rating: 5,
+  },
+  {
+    name: "Rahul Patel", 
+    role: "Fitness Coach, Delhi",
+    content: "Main apne sabhi clients ko Apex Forte recommend karta hun. Premium quality aur scientifically backed formulations.",
+    rating: 5,
+  },
+  {
+    name: "Sneha Reddy",
+    role: "Marathon Runner, Bangalore",
+    content: "Ye products se jo energy aur endurance boost milta hai, wo incredible hai. Real game-changer for Indian athletes!",
+    rating: 5,
+  },
+];
 
-    header h1 {
-      font-size: 1.6rem;
-      letter-spacing: 1px;
-    }
+const Index = () => {
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      
+      {/* Hero Section */}
+      <HeroSection />
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
+      {/* Featured Products Section */}
+      <section className="py-16 md:py-24 bg-muted/20">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <Badge className="bg-accent/20 text-accent border-accent/30 mb-4">
+              Trending Now
+            </Badge>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              <span className="text-gradient-energy">Featured</span>{" "}
+              <span className="text-foreground">Products</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Discover our most popular performance-enhancing products, trusted by elite athletes worldwide.
+            </p>
+          </div>
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))}
+          </div>
 
-    nav a:hover {
-      color: #00bcd4;
-    }
+          <div className="text-center mt-12">
+            <Button className="btn-hero">
+              View All Products
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+      </section>
 
-    section {
-      padding: 80px 10%;
-    }
+      {/* Category Section */}
+      <CategorySection />
 
-    h2 {
-      margin-bottom: 20px;
-      font-size: 2rem;
-      color: #111;
-    }
+      {/* Brand Story & Value Proposition */}
+      <section className="py-16 md:py-24 bg-gradient-to-r from-card to-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <Badge className="bg-primary/20 text-primary border-primary/30">
+                  Our Mission
+                </Badge>
+                <h2 className="text-3xl md:text-5xl font-bold">
+                  <span className="text-gradient-primary">Engineered for</span><br />
+                  <span className="text-foreground">Excellence</span>
+                </h2>
+                <div className="space-y-4 text-lg text-muted-foreground">
+                  <p>
+                    At Apex Forte, we believe that peak performance is not just a goal—it's a way of life. 
+                    Our mission is to provide elite athletes and fitness enthusiasts with scientifically 
+                    formulated supplements, cutting-edge apparel, and premium gear.
+                  </p>
+                  <p>
+                    Every product in our lineup undergoes rigorous testing and quality assurance to ensure 
+                    you get nothing but the best. Because when you're pushing your limits, you deserve 
+                    products that push theirs too.
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button className="btn-performance">
+                    Our Story
+                  </Button>
+                  <Button className="btn-energy">
+                    Quality Promise
+                  </Button>
+                </div>
+              </div>
 
-    p {
-      line-height: 1.6;
-      color: #444;
-      max-width: 800px;
-    }
+              <div className="grid grid-cols-2 gap-6">
+                {[
+                  { icon: Shield, title: "Third-Party Tested", desc: "Verified purity and potency" },
+                  { icon: Award, title: "Elite Approved", desc: "Trusted by professionals" },
+                  { icon: Truck, title: "Fast Shipping", desc: "Free shipping over $75" },
+                  { icon: Star, title: "5-Star Rated", desc: "Customer satisfaction guaranteed" },
+                ].map((feature, index) => (
+                  <div 
+                    key={index}
+                    className="card-athletic text-center hover-lift"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className="p-4 bg-primary/20 rounded-lg w-fit mx-auto mb-4">
+                      <feature.icon className="h-8 w-8 text-primary" />
+                    </div>
+                    <h3 className="font-bold text-lg mb-2">{feature.title}</h3>
+                    <p className="text-sm text-muted-foreground">{feature.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    /* ---------- HOME ---------- */
-    .hero {
-      background: url('https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1400&q=80')
-        center/cover no-repeat;
-      color: white;
-      text-align: center;
-      padding: 150px 20px;
-    }
+      {/* Social Proof & Testimonials */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              <span className="text-foreground">Trusted by</span>{" "}
+              <span className="text-gradient-energy">Champions</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Join thousands of athletes who have elevated their performance with Apex Forte.
+            </p>
+          </div>
 
-    .hero h2 {
-      font-size: 2.8rem;
-      margin-bottom: 20px;
-    }
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={index}
+                className="card-performance text-center hover-lift"
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                <Quote className="h-8 w-8 text-primary mx-auto mb-4" />
+                <div className="flex justify-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 text-warning fill-current" />
+                  ))}
+                </div>
+                <p className="text-muted-foreground mb-6 italic">"{testimonial.content}"</p>
+                <div>
+                  <p className="font-bold text-gradient-primary">{testimonial.name}</p>
+                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-    .hero p {
-      font-size: 1.2rem;
-    }
-
-    /* ---------- PRODUCTS ---------- */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .product {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-    }
-
-    .product img {
-      width: 100%;
-      border-radius: 12px;
-      height: 220px;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
-
-    .btn {
-      background-color: #00bcd4;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: 500;
-      margin-top: 10px;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background-color: #0097a7;
-    }
-
-    /* ---------- BLOG ---------- */
-    .blog-card {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
-    }
-
-    .blog-card h3 {
-      margin-bottom: 10px;
-    }
-
-    /* ---------- PROMOTIONS ---------- */
-    .promo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
-
-    iframe, video {
-      width: 100%;
-      border-radius: 12px;
-    }
-
-    footer {
-      background: #000;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <h1>Covalence</h1>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#shop">Shop</a></li>
-        <li><a href="#blogs">Blogs</a></li>
-        <li><a href="#promotions">Promotions</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- HOME -->
-  <section id="home" class="hero">
-    <h2>Smart Design. Smarter Living.</h2>
-    <p>At Covalence, we craft next-gen smart accessories that combine style, technology, and practicality to power your daily life.</p>
-  </section>
-
-  <section>
-    <h2>About Covalence</h2>
-    <p>
-      Covalence is a modern tech accessories brand focused on creating products that merge functionality with refined aesthetics.
-      Our mission is to make technology feel personal, effortless, and seamlessly integrated into your lifestyle.
-    </p>
-  </section>
-
-  <!-- PRODUCTS -->
-  <section id="products">
-    <h2>Our Products</h2>
-    <div class="product-grid">
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1606813902879-4e9e72c259d8?auto=format&fit=crop&w=600&q=80" alt="Smartwatch" />
-        <h3>Pulse Smartwatch</h3>
-        <p>Track your health and stay connected in style with advanced sensors and sleek design.</p>
-        <button class="btn">View Product</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1590650046871-92c887180603?auto=format&fit=crop&w=600&q=80" alt="Earbuds" />
-        <h3>EchoPods Pro</h3>
-        <p>Wireless freedom with premium sound, noise cancellation, and all-day comfort.</p>
-        <button class="btn">View Product</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1606813902830-c0f0c4e7a09b?auto=format&fit=crop&w=600&q=80" alt="Charger" />
-        <h3>Fusion Charger</h3>
-        <p>Fast, reliable, and elegant charging solutions built for the modern workspace.</p>
-        <button class="btn">View Product</button>
-      </div>
+      {/* Footer */}
+      <footer className="bg-card border-t border-border/50 py-12">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <div className="flex items-center justify-center space-x-2 mb-6">
+              <div className="p-2 bg-gradient-to-br from-primary to-accent rounded-lg">
+                <Award className="h-6 w-6 text-primary-foreground" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold text-gradient-primary">APEX</span>
+                <span className="text-xs text-muted-foreground -mt-1">FORTE</span>
+              </div>
+            </div>
+            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Engineered for excellence, trusted by champions. Your journey to peak performance starts here.
+            </p>
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-primary transition-colors">Shipping Info</a>
+              <a href="#" className="hover:text-primary transition-colors">Returns</a>
+              <a href="#" className="hover:text-primary transition-colors">Contact</a>
+            </div>
+            <div className="mt-8 pt-8 border-t border-border/50">
+              <p className="text-sm text-muted-foreground">
+                © 2024 Apex Forte. All rights reserved. Engineered for peak performance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
-  </section>
+  );
+};
 
-  <!-- SHOP -->
-  <section id="shop">
-    <h2>Shop Covalence</h2>
-    <p>Explore our full collection and bring home innovation. Secure payments and fast delivery.</p>
-    <button class="btn">Go to Cart</button>
-  </section>
-
-  <!-- BLOG -->
-  <section id="blogs">
-    <h2>From Our Blog</h2>
-    <div class="blog-card">
-      <h3>Design Meets Functionality</h3>
-      <p>Discover how Covalence combines technology and aesthetics to redefine everyday accessories.</p>
-    </div>
-
-    <div class="blog-card">
-      <h3>Inside Covalence Labs</h3>
-      <p>Get a behind-the-scenes look at how we innovate and craft products for tomorrow’s needs.</p>
-    </div>
-  </section>
-
-  <!-- PROMOTIONS -->
-  <section id="promotions">
-    <h2>Promotions & Campaigns</h2>
-    <div class="promo-grid">
-      <video controls poster="https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=1200&q=80">
-        <source src="promo-video.mp4" type="video/mp4">
-      </video>
-      <img src="https://images.unsplash.com/photo-1602526218963-20d0aef8e7d0?auto=format&fit=crop&w=600&q=80" alt="Campaign Poster">
-      <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Campaign Video"></iframe>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Covalence | Smart Accessories for Modern Living</p>
-  </footer>
-</body>
-</html>
+export default Index;
